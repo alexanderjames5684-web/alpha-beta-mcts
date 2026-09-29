@@ -129,7 +129,7 @@ These are proposed responsibilities for a four-person team. Members can choose r
 
 | Member | Main responsibility | Deliverables |
 | --- | --- | --- |
-| Member 1 | Game environment | Implement the rules, legal moves, win/draw detection, and a shared interface both agents can use. |
+| AJ Flower | Game environment | Implement the rules, legal moves, win/draw detection, and a shared interface both agents can use. |
 | Member 2 | Alpha-Beta agent | Implement Minimax with alpha-beta pruning, an evaluation function, and adjustable search depth. |
 | Member 3 | MCTS agent | Implement selection, expansion, simulation, and backpropagation with an adjustable simulation budget. |
 | Member 4 | Tournament and analysis | Implement match scheduling, a Random baseline, result collection, and comparisons of win rate and decision time. |
