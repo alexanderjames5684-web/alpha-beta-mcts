@@ -145,7 +145,7 @@ Everyone will test their own part, review at least one teammate's work, and help
 - [x] Select project topic
 - [ ] Research Alpha-Beta Pruning
 - [ ] Research Monte Carlo Tree Search
-- [ ] Select game environment
+- [x] Select game environment
 - [ ] Design game architecture
 - [ ] Implement baseline agent
 - [ ] Implement Alpha-Beta agent
