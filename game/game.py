@@ -1,7 +1,6 @@
 """Connect Four starter: board display, piece placement, and alternating turns."""
 
 
-from matplotlib.pylab import rint
 
 
 class ConnectFour:
