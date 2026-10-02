@@ -1,6 +1,9 @@
 """Connect Four starter: board display, piece placement, and alternating turns."""
 
 
+from matplotlib.pylab import rint
+
+
 class ConnectFour:
     ROWS = 6
     COLUMNS = 7
@@ -31,6 +34,24 @@ class ConnectFour:
                 self.current_player = 3 - self.current_player
                 return
 
+    def check_horizontal_win(self):
+    # Check for a horizontal win on the board.
+
+        for row in range(self.ROWS):
+            for column in range(self.COLUMNS-3):
+                player=self.board[row][column]
+
+                if player == 0:
+                    continue
+
+                if (
+                    self.board[row][column+1] == player and
+                    self.board[row][column+2] == player and
+                    self.board[row][column+3] == player
+                ):
+                    return player
+        return None
+
     def display(self):
         """Print the board with column labels 1 through 7 for human players."""
         symbols = {0: ".", 1: "X", 2: "O"}
@@ -39,11 +60,10 @@ class ConnectFour:
             print("| " + " ".join(symbols[cell] for cell in row) + " |")
         print()
 
-
 def main():
     game = ConnectFour()
     print("Connect Four starter — Player 1: X, Player 2: O")
-    print("Win detection is not implemented yet. Enter q to quit.")
+    print("Only Horizontal wins are checked. Vertical and Diagonal wins are not checked yet. Enter q to quit.")
     game.display()
 
     while game.legal_moves():
@@ -66,8 +86,15 @@ def main():
             else:
                 print(error)
             continue
-
         game.display()
+        
+        # Check for a horizontal win after each move.
+        winner = game.check_horizontal_win()
+        if winner is not None:
+            print(f"Player {winner} wins!")
+            return
+       
+  
 
     print("The board is full. This starter does not evaluate wins or draws yet.")
 
