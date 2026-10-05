@@ -132,7 +132,7 @@ These are proposed responsibilities for a four-person team. Members can choose r
 | AJ | Game environment | Implement the rules, legal moves, win/draw detection, and a shared interface both agents can use. |
 | Brady | Alpha-Beta agent | Implement Minimax with alpha-beta pruning, an evaluation function, and adjustable search depth. |
 | Member 3 | MCTS agent | Implement selection, expansion, simulation, and backpropagation with an adjustable simulation budget. |
-| Member 4 | Tournament and analysis | Implement match scheduling, a Random baseline, result collection, and comparisons of win rate and decision time. |
+| Matthew | Tournament and analysis | Implement match scheduling, a Random baseline, result collection, and comparisons of win rate and decision time. |
 
 Everyone will test their own part, review at least one teammate's work, and help write the final findings and presentation. The group can adjust the split after choosing a game to keep the workload balanced.
 
