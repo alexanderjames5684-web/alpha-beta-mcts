@@ -55,6 +55,45 @@ class AlphaBetaAgent:
                 # Add this window's value to the overall board score.
                 score += self._score_window(window, player)
 
+        # Examine every vertical group of four spaces on the board.
+        for column in range(game.COLUMNS):
+            for row in range(game.ROWS - 3):
+
+                # Build a four-space vertical window from top to bottom.
+                window = [
+                    game.board[row + offset][column]
+                    for offset in range(4)
+                ]
+
+                # Add this window's value to the overall board score.
+                score += self._score_window(window, player)
+
+        # Examine every downward-right diagonal group of four spaces.
+        for row in range(game.ROWS - 3):
+            for column in range(game.COLUMNS - 3):
+
+                # Build a four-space diagonal window.
+                window = [
+                    game.board[row + offset][column + offset]
+                    for offset in range(4)
+                ]
+
+                # Add this window's value to the overall board score.
+                score += self._score_window(window, player)
+
+        # Examine every upward-right diagonal group of four spaces.
+        for row in range(3, game.ROWS):
+            for column in range(game.COLUMNS - 3):
+
+                # Build a four-space diagonal window.
+                window = [
+                    game.board[row - offset][column + offset]
+                    for offset in range(4)
+                ]
+
+                # Add this window's value to the overall board score.
+                score += self._score_window(window, player)
+
         return score
 
     def _score_window(self, window, player):
