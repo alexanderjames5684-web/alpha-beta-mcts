@@ -143,10 +143,10 @@ Everyone will test their own part, review at least one teammate's work, and help
 **Current Stage:** 🔎 Research & Planning
 
 - [x] Select project topic
-- [ ] Research Alpha-Beta Pruning
+- [x] Research Alpha-Beta Pruning
 - [ ] Research Monte Carlo Tree Search
 - [x] Select game environment
-- [ ] Design game architecture
+- [x] Design game architecture
 - [ ] Implement baseline agent
 - [ ] Implement Alpha-Beta agent
 - [ ] Implement MCTS agent
@@ -154,12 +154,6 @@ Everyone will test their own part, review at least one teammate's work, and help
 - [ ] Run experiments
 - [ ] Analyze results
 - [ ] Document findings
-
----
-
-## 📚 Research & References
-
-Research papers, tutorials, implementations, and other resources used while developing the project will be documented here as the project progresses.
 
 ---
 
@@ -171,6 +165,3 @@ The repository will evolve as research is completed and design decisions are mad
 
 ---
 
-### 🚀 More coming soon!
-
-Currently researching the algorithms and designing the initial game environment.
