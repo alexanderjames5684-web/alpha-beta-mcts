@@ -19,6 +19,10 @@ class ConnectFour:
             if self.board[0][column] == 0
         ]
 
+    def board_state(self):
+        return self.board
+    
+
     def apply_move(self, column):
         """Drop a piece into a column, then switch players."""
         if type(column) is not int or not 0 <= column < self.COLUMNS:
@@ -33,22 +37,40 @@ class ConnectFour:
                 self.current_player = 3 - self.current_player
                 return
 
-    def check_horizontal_win(self):
-    # Check for a horizontal win on the board.
+    def check_win(self):
+    # Directions used for win check
+        directions = [{'r':1,'c':-1},
+                        {'r':1,'c':0}, 
+                        {'r':1,'c':1}, 
+                        {'r':0,'c':-1}, 
+                        {'r':0,'c':1},
+                        {'r':-1,'c':-1},
+                        {'r':-1,'c':0},
+                        {'r':-1,'c':1}
+        ]
 
         for row in range(self.ROWS):
-            for column in range(self.COLUMNS-3):
+            for column in range(self.COLUMNS):
                 player=self.board[row][column]
 
                 if player == 0:
                     continue
+                
+                for d in directions:
+                    count = 1
+                    temprow = row
+                    tempcol = column
+                    try: 
+                        while self.board[temprow + d['r']][tempcol +d['c']] == player:
+                            count += 1
+                            if count == 4:
+                                return player
+                            temprow += d['r']
+                            tempcol += d['c']
+                    except :
+                        count = 1
 
-                if (
-                    self.board[row][column+1] == player and
-                    self.board[row][column+2] == player and
-                    self.board[row][column+3] == player
-                ):
-                    return player
+                            
         return None
 
     def display(self):
@@ -59,44 +81,50 @@ class ConnectFour:
             print("| " + " ".join(symbols[cell] for cell in row) + " |")
         print()
 
-def main():
-    game = ConnectFour()
-    print("Connect Four starter — Player 1: X, Player 2: O")
-    print("Only Horizontal wins are checked. Vertical and Diagonal wins are not checked yet. Enter q to quit.")
-    game.display()
+# def main():
+#     game = ConnectFour()
+#     print("Connect Four starter — Player 1: X, Player 2: O")
+#     print("Only Horizontal wins are checked. Vertical and Diagonal wins are not checked yet. Enter q to quit.")
+#     game.display()
 
-    while game.legal_moves():
-        try:
-            choice = input(f"Player {game.current_player}, choose a column (1-7): ")
-        except (EOFError, KeyboardInterrupt):
-            print("\nGame closed.")
-            return
+#     ai = mtcs.MCTS(iterations=2000);
 
-        if choice.strip().lower() == "q":
-            print("Game closed.")
-            return
 
-        try:
-            # Human column 1 corresponds to internal column 0.
-            game.apply_move(int(choice) - 1)
-        except ValueError as error:
-            if not choice.strip().lstrip("+-").isdigit():
-                print("Enter a whole number from 1 to 7, or q to quit.")
-            else:
-                print(error)
-            continue
-        game.display()
+#     while game.legal_moves():
+#         try:
+#             if game.current_player == 1:
+#                 choice = input(f"Player {game.current_player}, choose a column (1-7): ")
+#             elif game.current_player == 2:
+#                 choice = str(ai.search(game))
+#         except (EOFError, KeyboardInterrupt):
+#             print("\nGame closed.")
+#             return
+
+#         if choice.strip().lower() == "q":
+#             print("Game closed.")
+#             return
+
+#         try:
+#             # Human column 1 corresponds to internal column 0.
+#             game.apply_move(int(choice) - 1)
+#         except ValueError as error:
+#             if not choice.strip().lstrip("+-").isdigit():
+#                 print("Enter a whole number from 1 to 7, or q to quit.")
+#             else:
+#                 print(error)
+#             continue
+#         game.display()
         
-        # Check for a horizontal win after each move.
-        winner = game.check_horizontal_win()
-        if winner is not None:
-            print(f"Player {winner} wins!")
-            return
+#         # Check for a horizontal win after each move.
+#         winner = game.check_horizontal_win()
+#         if winner is not None:
+#             print(f"Player {winner} wins!")
+#             return
        
   
 
-    print("The board is full. This starter does not evaluate wins or draws yet.")
+#     print("The board is full. This starter does not evaluate wins or draws yet.")
 
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()
