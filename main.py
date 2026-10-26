@@ -9,7 +9,7 @@ def main():
     print("Only Horizontal wins are checked. Vertical and Diagonal wins are not checked yet. Enter q to quit.")
     game.display()
 
-    ai = mtcs.MCTS(iterations=1000)
+    ai = mtcs.MCTS(iterations=2000)
 
 
     while game.legal_moves() and not game.check_win():

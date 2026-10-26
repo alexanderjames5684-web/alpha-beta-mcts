@@ -62,6 +62,8 @@ class ConnectFour:
                     tempcol = column
                     try: 
                         while self.board[temprow + d['r']][tempcol +d['c']] == player:
+                            if not (0 <= temprow + d['r'] < self.ROWS and 0 <= tempcol+ d['c'] < self.COLUMNS):
+                                break
                             count += 1
                             if count == 4:
                                 return player

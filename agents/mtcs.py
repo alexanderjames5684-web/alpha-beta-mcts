@@ -4,9 +4,9 @@ import copy
 
 class MCTSNode:
     def __init__(self, game_state, parent=None, move=None):
-        self.game_state = game_state  # Instance of ConnectFour
+        self.game_state = game_state 
         self.parent = parent
-        self.move = move  # The move that led to this state
+        self.move = move  
         self.children = []
         self.visits = 0
         self.wins = 0.0
@@ -54,7 +54,7 @@ class MCTS:
             # 3. Simulation (Rollout)
             sim_state = copy.deepcopy(state)
             winner = sim_state.check_win()
-            while not winner:
+            while not winner and sim_state.legal_moves():
                 legal_moves = sim_state.legal_moves()
                 if not legal_moves:
                     break
@@ -67,7 +67,7 @@ class MCTS:
                 node.visits += 1
                 if winner == root_player:
                     node.wins += 1.0
-                elif winner:
+                elif not winner:
                     node.wins += 0.5  
                 node = node.parent
 
