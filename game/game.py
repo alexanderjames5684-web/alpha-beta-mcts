@@ -100,15 +100,23 @@ class ConnectFour:
     def display(self):
         """Print human column labels and piece symbols."""
         symbols = {0: ".", 1: "X", 2: "O"}
-        print("\n  1 2 3 4 5 6 7")
+        print("\n    " + "   ".join(str(column + 1) for column in range(self.COLUMNS)))
+        border = "  +" + "---+" * self.COLUMNS
+        print(border)
         for row in self.board:
-            print("| " + " ".join(symbols[cell] for cell in row) + " |")
+            print("  | " + " | ".join(symbols[cell] for cell in row) + " |")
+        print(border)
         print()
 
 
 def main():
     game = ConnectFour()
-    print("Connect Four - Player 1: X, Player 2: O")
+    print("=" * 33)
+    print("CONNECT FOUR".center(33))
+    print("ALPHA-BETA vs MCTS".center(33))
+    print("=" * 33)
+    print("\nX = Player 1   O = Player 2")
+    print("Connect four pieces to win!")
     print("Choose a column from 1 to 7. Enter q to quit.")
     game.display()
 
